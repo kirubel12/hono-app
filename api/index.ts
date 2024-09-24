@@ -11,4 +11,10 @@ app.get("/", (c) => {
   return c.json({ message: "Hello Hono!" });
 });
 
+app.get("/hello", (c) => {
+  return c.json({
+    message: "Hello Next.js!",
+  });
+});
+
 export default handle(app);
