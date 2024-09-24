@@ -1,9 +1,15 @@
 import { Hono } from "hono";
+import { handle } from "hono/vercel";
 
-const app = new Hono();
+export const runtime = "edge";
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
+const app = new Hono().basePath("/api");
+
+app.get("/hello", (c) => {
+  return c.json({
+    message: "Hello Next.js!",
+  });
 });
 
-export default app;
+export const GET = handle(app);
+export const POST = handle(app);
